@@ -16,8 +16,6 @@
   </a>
 </p>
 
----
-
 ## ✨ Features
 
 - 🚀 High-performance sharding for concurrency and scalability
@@ -30,16 +28,13 @@
 
 - 🦀 Built entirely in Rust, with safety and speed in mind
 
----
-
-🤝 Contributing
+## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 Feel free to open an issue
 or submit a pull request.
----
 
-📜 License
+## 📜 License
 
 This project is licensed under the Apache 2.0 License – see the LICENSE
 file for details.
