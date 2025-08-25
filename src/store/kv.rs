@@ -1,3 +1,1 @@
-struct KvStore {
-    
-}
+struct KvStore {}

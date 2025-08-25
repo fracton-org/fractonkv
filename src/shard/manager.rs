@@ -1,11 +1,10 @@
+use crate::shard::{Shard, ShardJob};
+use crate::store::entry::Entry;
 use std::collections::hash_map::DefaultHasher;
 use std::hash::{Hash, Hasher};
 use tokio::sync::mpsc::{self, Sender as MpscSender};
 use tokio::sync::oneshot;
 use ulid::Ulid;
-use crate::shard::{Shard, ShardJob};
-use crate::store::entry::Entry;
-
 
 pub struct ShardManager {
     shard_senders: Vec<MpscSender<ShardJob>>,
@@ -42,7 +41,7 @@ impl ShardManager {
         let shard_idx = self.shard_for_key(&job.entry.key);
         self.shard_senders[shard_idx]
             .send(job)
-            .await  
+            .await
             .map_err(|_| ())?;
 
         resp_rx.await.map_err(|_| ())

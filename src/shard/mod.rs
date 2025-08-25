@@ -31,10 +31,10 @@ impl Shard {
         }
     }
 
-    pub async fn run(mut self){
+    pub async fn run(mut self) {
         match self.jobs.recv().await {
             Some(job) => {
-                let result=self.handle_job(job).await;
+                let result = self.handle_job(job).await;
                 // Send the result back via oneshot channel
                 if let Err(_) = result {
                     eprintln!("Shard {} failed to respond to client", self.id);
@@ -53,7 +53,10 @@ impl Shard {
 
         // Respond with success message
         job.response
-            .send(format!("OK: Shard {} stored key {}", self.id, job.entry.key))
+            .send(format!(
+                "OK: Shard {} stored key {}",
+                self.id, job.entry.key
+            ))
             .map_err(|_| ())
     }
 }

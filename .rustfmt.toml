@@ -1,0 +1,11 @@
+edition = "2024"
+
+# --- Cleanups ---
+merge_derives = true            # Combines #[derive(...)] into one
+reorder_imports = true          # Orders imports consistently
+reorder_modules = true          # Orders modules in a file
+use_field_init_shorthand = true # Uses { field } instead of { field: field }
+
+# --- Formatting Style ---
+max_width = 100                 # Keeps lines at a reasonable length
+
