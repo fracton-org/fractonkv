@@ -16,6 +16,10 @@
   </a>
 </p>
 
+> ⚠️ Experimental Project Notice
+> FractonKV is currently in an early, experimental stage as part of a research thesis. It is not production-ready and may
+> be unstable. Users should consider it a proof-of-concept and use it at their own risk.
+
 ## ✨ Features
 
 - 🚀 High-performance sharding for concurrency and scalability
