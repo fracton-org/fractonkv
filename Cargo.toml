@@ -1,0 +1,13 @@
+[package]
+name = "fractonkv"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tokio = { version = "1.47.1", features = ["full"] }
+ulid = "1.2.1"
+async-trait = "0.1.89"
+anyhow = "1.0.99"
+strum = { version = "0.27", features = ["derive"] }
+redis-protocol = { version = "6.0.0", features = ["default", "bytes"] }
+bytes = "1.10.1"
