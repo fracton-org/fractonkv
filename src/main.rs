@@ -1,10 +1,12 @@
-use crate::engine::{ServerEngine, TcpEngine};
+use crate::engine::TcpEngine;
 
 mod engine;
 mod shard;
 mod store;
 
-#[tokio::main(flavor = "multi_thread")]
+// Usage example
+#[tokio::main]
 async fn main() {
-    TcpEngine::start().await;
+    let engine = TcpEngine::new();
+    engine.start().await;
 }
