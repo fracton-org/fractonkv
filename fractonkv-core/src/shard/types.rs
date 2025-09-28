@@ -44,14 +44,8 @@ impl DataKind {
             DataKind::Hash(hash_map) => {
                 let mut frames = Vec::with_capacity(hash_map.len() * 2);
                 for (k, v) in hash_map {
-                    frames.push(BytesFrame::SimpleString {
-                        data: k.clone().into(),
-                        attributes: None,
-                    });
-                    frames.push(BytesFrame::SimpleString {
-                        data: v.clone().into(),
-                        attributes: None,
-                    });
+                    frames.push(BytesFrame::BlobString { data: k.clone(), attributes: None });
+                    frames.push(BytesFrame::BlobString { data: v.clone(), attributes: None });
                 }
                 BytesFrame::Array { data: frames, attributes: None }
             }

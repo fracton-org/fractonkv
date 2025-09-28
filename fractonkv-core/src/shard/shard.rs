@@ -90,7 +90,10 @@ fn handle_frame(frame: &BytesFrame, db: &mut DataStore) -> BytesFrame {
     };
 
     let args: &[BytesFrame] = &arr[1..];
-    let cmd = CommandKind::from_frame(frame).unwrap();
+    let cmd = match CommandKind::from_frame(frame) {
+        Ok(cmd) => cmd,
+        Err(err) => return BytesFrame::from(err),
+    };
 
     BytesFrame::SimpleError {
         data: "ERR command not implemented".into(),

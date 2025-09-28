@@ -103,7 +103,7 @@ pub fn commands(_: TokenStream, item: TokenStream) -> TokenStream {
     let mut desc_matches = Vec::new();
 
     for (cmd_name, cmd) in commands {
-        let ident_name = cmd_name.from_case(Case::Kebab).to_case(Case::Pascal);
+        let ident_name = cmd_name.to_case(Case::Pascal);
         let ident = syn::Ident::new(&ident_name, proc_macro2::Span::call_site());
 
         let arity = cmd.arity;
@@ -111,8 +111,8 @@ pub fn commands(_: TokenStream, item: TokenStream) -> TokenStream {
             syn::LitStr::new(cmd.summary.as_deref().unwrap_or(""), proc_macro2::Span::call_site());
 
         variants.push(quote! { #ident });
-        arity_matches.push(quote! { CommandKind::#ident => #arity, });
-        desc_matches.push(quote! { CommandKind::#ident => #desc_lit, });
+        arity_matches.push(quote! { Self::#ident => #arity, });
+        desc_matches.push(quote! { Self::#ident => #desc_lit, });
     }
 
     let input_enum = parse_macro_input!(item as ItemEnum);
