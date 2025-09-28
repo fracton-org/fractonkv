@@ -1,7 +1,7 @@
-use crate::commands::CommandKind;
+use crate::commands::{CommandKind, dispatcher::dispatch_command};
 use crate::shard::types::DataStore;
-use futures::FutureExt;
 
+use futures::FutureExt;
 use futures::stream::FuturesUnordered;
 use futures::{SinkExt, StreamExt};
 use log::{error, info};
@@ -95,8 +95,5 @@ fn handle_frame(frame: &BytesFrame, db: &mut DataStore) -> BytesFrame {
         Err(err) => return BytesFrame::from(err),
     };
 
-    BytesFrame::SimpleError {
-        data: "ERR command not implemented".into(),
-        attributes: None,
-    }
+    dispatch_command(cmd, args, db).unwrap_or_else(|err| err.into())
 }
