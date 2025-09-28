@@ -1,0 +1,30 @@
+[package]
+name = "fractonkv-core"
+version = "0.1.0"
+edition = "2024"
+
+
+[dependencies]
+tokio = { version = "1.47.1", features = ["full"] }
+ulid = "1.2.1"
+strum = { version = "0.27", features = ["derive"] }
+redis-protocol = { version = "6.0.0", features = [
+    "resp3",
+    "bytes",
+    "codec",
+    "convert",
+] }
+bytes = "1.10.1"
+tokio-util = { version = "0.7.16", features = ["codec"] }
+futures = "0.3.31"
+num_cpus = "1.17.0"
+tracing = "0.1.41"
+tracing-subscriber = { version = "0.3.19", features = ["json"] }
+tokio-rustls = "0.26.2"
+log = "0.4.27"
+serde = "1.0.219"
+socket2 = "0.6.0"
+thiserror = "2.0.16"
+twox-hash = "2.1.2"
+fractonkv-macros = { path = "../fractonkv-macros" }
+strum_macros = "0.27.2"
