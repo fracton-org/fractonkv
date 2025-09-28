@@ -93,7 +93,7 @@ fn load_commands_from_folder(folder_path: &Path) -> Vec<(String, Command)> {
 
 #[proc_macro_attribute]
 #[proc_macro_error]
-pub fn commands(_: TokenStream, item: TokenStream) -> TokenStream {
+pub fn generate_command_kind(_: TokenStream, item: TokenStream) -> TokenStream {
     let manifest_dir = std::env::var("CARGO_MANIFEST_DIR").unwrap();
     let folder_path = std::path::Path::new(&manifest_dir).parent().unwrap().join("commands");
 

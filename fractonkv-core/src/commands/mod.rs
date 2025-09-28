@@ -1,12 +1,14 @@
-pub(crate) mod get;
-pub(crate) mod set;
+pub(crate) mod dispatcher;
 
-use fractonkv_macros::commands;
-use redis_protocol::resp3::types::BytesFrame;
+mod get;
+mod set;
 
 use crate::errors::FrameError;
 
-#[commands]
+use fractonkv_macros::generate_command_kind;
+use redis_protocol::resp3::types::BytesFrame;
+
+#[generate_command_kind]
 pub enum CommandKind {}
 
 impl CommandKind {
